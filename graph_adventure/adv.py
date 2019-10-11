@@ -21,8 +21,8 @@ player = Player("Name", world.startingRoom)
 
 # FILL THIS IN
 traversalPath = []
-traversalGraph = {} 
-class Stack:
+traversalGraph = {}
+class Stack():
     def __init__(self):
         self.stack = []
     def push(self, value):
@@ -35,26 +35,25 @@ class Stack:
     def size(self):
         return len(self.stack)
 
-def traverseRooms(vertex, roomGraph, visited=None): 
-    pass 
+
+def traverseRooms(starting_hub, num_of_rooms, roomGraph, visited=None): 
     visited = set() 
-    if vertex not in visited:
-        visited.add(vertex) 
-    elif 'n' in roomGraph[vertex][1]: 
-        vertex =  roomGraph[vertex][1]['n'] 
-        traverseRooms(vertex, roomGraph, visited) 
-    elif 'e' in roomGraph[vertex][1]: 
-        vertex = roomGraph[vertex][1]['e'] 
-        traverseRooms(vertex, roomGraph, visited) 
-    elif 's' in roomGraph[vertex][1]: 
-        vertex =  roomGraph[vertex][1]['s'] 
-        traverseRooms(vertex, roomGraph, visited) 
-    elif 'w' in roomGraph[vertex][1]: 
-        vertex = roomGraph[vertex][1]['w'] 
-        traverseRooms(vertex, roomGraph, visited) 
-    else: 
-        print('hahahaha THIS IS TERRRIBLE')
-    print(visited)
+    hub_list = Stack()  
+    while len(visited) < num_of_rooms: 
+        if len(roomGraph[starting_hub][1]) > 2: # if the node can go more than 2 directions
+            hub_list.add(starting_hub) 
+            
+
+    ## Create a list of hub nodes 
+    ## start at a hub node -- first is 000 
+    ## if it can go more than 2 directions, add to hub list 
+    ## if it can go 2 directions, pick one direction and go that way to next node
+    ## if next node is a hub node, add to hub list 
+    ## if next node is NOT a hub node keep going in that direction 
+    ## if you hit a node that can only go one direction, go back to the most recent node on the hub list and if there is an unvisited adjacent room, go that direction  
+    ## if there are no unvisited adjacent rooms, remove room from hub list and go to the next room on the hub list 
+    # repeat until there are no hubs on hub list 
+
    
 
 
